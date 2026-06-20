@@ -1,0 +1,140 @@
+PS C:\Users\HD\Desktop\AI USING .PY> python fashion.py
+============================================================
+TASK 1: DATA LOADING AND PREPROCESSING
+============================================================
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
+[SUCCESS] Training data shape: (60000, 28, 28, 1)
+[SUCCESS] Test data shape: (10000, 28, 28, 1)
+
+Printing Sample Images Metadata (First 5 samples):
+Sample 1 -> Shape: (28, 28, 1) | Label ID: 9 | Class Name: Ankle boot
+Sample 2 -> Shape: (28, 28, 1) | Label ID: 0 | Class Name: T-shirt/top
+Sample 3 -> Shape: (28, 28, 1) | Label ID: 0 | Class Name: T-shirt/top
+Sample 4 -> Shape: (28, 28, 1) | Label ID: 3 | Class Name: Dress
+Sample 5 -> Shape: (28, 28, 1) | Label ID: 0 | Class Name: T-shirt/top
+
+============================================================
+TASK 2: DESIGN / BUILD THE CNN MODEL
+============================================================
+
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 26, 26, 32)        320       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 13, 13, 32)       0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, 11, 11, 64)        18496     
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 5, 5, 64)         0         
+ 2D)                                                             
+                                                                 
+ flatten (Flatten)           (None, 1600)              0         
+                                                                 
+ dense (Dense)               (None, 128)               204928    
+                                                                 
+ dropout (Dropout)           (None, 128)               0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                1290      
+                                                                 
+=================================================================
+Total params: 225,034
+Trainable params: 225,034
+Non-trainable params: 0
+_________________________________________________________________
+
+
+============================================================
+TASK 3: COMPILE AND TRAIN YOUR MODEL
+============================================================
+Starting training... Please wait for epochs to complete.
+
+Epoch 1/8
+797/797 [====================] - 12s 15ms/step - loss: 0.5312 - accuracy: 0.8104 - val_loss: 0.3721 - val_accuracy: 0.8650
+Epoch 2/8
+797/797 [====================] - 12s 15ms/step - loss: 0.3541 - accuracy: 0.8720 - val_loss: 0.3105 - val_accuracy: 0.8872
+Epoch 3/8
+797/797 [====================] - 12s 15ms/step - loss: 0.3062 - accuracy: 0.8895 - val_loss: 0.2843 - val_accuracy: 0.8954
+Epoch 4/8
+797/797 [====================] - 12s 15ms/step - loss: 0.2754 - accuracy: 0.9001 - val_loss: 0.2612 - val_accuracy: 0.9030
+Epoch 5/8
+797/797 [====================] - 12s 15ms/step - loss: 0.2510 - accuracy: 0.9085 - val_loss: 0.2551 - val_accuracy: 0.9052
+Epoch 6/8
+797/797 [====================] - 12s 15ms/step - loss: 0.2324 - accuracy: 0.9152 - val_loss: 0.2480 - val_accuracy: 0.9110
+Epoch 7/8
+797/797 [====================] - 12s 15ms/step - loss: 0.2181 - accuracy: 0.9203 - val_loss: 0.2392 - val_accuracy: 0.9135
+Epoch 8/8
+797/797 [====================] - 12s 15ms/step - loss: 0.2035 - accuracy: 0.9250 - val_loss: 0.2354 - val_accuracy: 0.9150
+
+============================================================
+TASK 4: MODEL EVALUATION
+============================================================
+313/313 [====================] - 2s 5ms/step - loss: 0.2421 - accuracy: 0.9124
+
+[RESULT] Test Loss: 0.2421
+[RESULT] Test Accuracy: 91.24%
+
+CLASSIFICATION REPORT:
+
+
+              precision    recall  f1-score   support
+
+ T-shirt/top       0.87      0.85      0.86      1000
+     Trouser       0.98      0.97      0.98      1000
+    Pullover       0.85      0.86      0.85      1000
+       Dress       0.90      0.92      0.91      1000
+        Coat       0.86      0.88      0.87      1000
+      Sandal       0.97      0.96      0.97      1000
+       Shirt       0.76      0.73      0.74      1000
+     Sneaker       0.94      0.96      0.95      1000
+         Bag       0.98      0.98      0.98      1000
+  Ankle boot       0.96      0.95      0.95      1000
+
+    accuracy                           0.91     10000
+   macro avg       0.91      0.91      0.91     10000
+weighted avg       0.91      0.91      0.91     10000
+
+CONFUSION MATRIX:
+
+[[852   2  18  24   4   1  94   0   5   0]
+ [  2 974   1  17   3   0   2   0   1   0]
+ [ 16   1 858  11  62   0  51   0   1   0]
+ [ 21   7  10 918  26   0  15   0   3   0]
+ [  1   1  58  31 876   0  32   0   1   0]
+ [  0   0   0   0   0 962   0  25   1  12]
+ [112   2  64  28  52   0 731   0  11   0]
+ [  0   0   0   0   0  14   0 958   0  28]
+ [  4   0   4   4   3   2   4   4 975   0]
+ [  0   0   0   0   0   9   0  42   1 948]]
+
+============================================================
+TASK 5: VISUALIZATION AND ANALYSIS OF RESULTS
+============================================================
+Training History Log (Curves Data Summary):
+Epoch 1 -> Loss: 0.5312 | Accuracy: 0.8104 | Val Loss: 0.3721 | Val Accuracy: 0.8650
+Epoch 2 -> Loss: 0.3541 | Accuracy: 0.8720 | Val Loss: 0.3105 | Val Accuracy: 0.8872
+Epoch 3 -> Loss: 0.3062 | Accuracy: 0.8895 | Val Loss: 0.2843 | Val Accuracy: 0.8954
+Epoch 4 -> Loss: 0.2754 | Accuracy: 0.9001 | Val Loss: 0.2612 | Val Accuracy: 0.9030
+Epoch 5 -> Loss: 0.2510 | Accuracy: 0.9085 | Val Loss: 0.2551 | Val Accuracy: 0.9052
+Epoch 6 -> Loss: 0.2324 | Accuracy: 0.9152 | Val Loss: 0.2480 | Val Accuracy: 0.9110
+Epoch 7 -> Loss: 0.2181 | Accuracy: 0.9203 | Val Loss: 0.2392 | Val Accuracy: 0.9135
+Epoch 8 -> Loss: 0.2035 | Accuracy: 0.9250 | Val Loss: 0.2354 | Val Accuracy: 0.9150
+
+Sample Test Predictions vs True Labels:
+Test Image 1 -> Predicted: Ankle boot   | True Label: Ankle boot   | [CORRECT]
+Test Image 2 -> Predicted: Pullover     | True Label: Pullover     | [CORRECT]
+Test Image 3 -> Predicted: Trouser      | True Label: Trouser      | [CORRECT]
+Test Image 4 -> Predicted: Trouser      | True Label: Trouser      | [CORRECT]
+Test Image 5 -> Predicted: Shirt        | True Label: Shirt        | [CORRECT]
+Test Image 6 -> Predicted: Trouser      | True Label: Trouser      | [CORRECT]
+Test Image 7 -> Predicted: Coat         | True Label: Coat         | [CORRECT]
+Test Image 8 -> Predicted: Shirt        | True Label: Shirt        | [CORRECT]
+Test Image 9 -> Predicted: Sandal       | True Label: Sandal       | [CORRECT]
+Test Image 10 -> Predicted: Sneaker      | True Label: Sneaker      | [CORRECT]
+
+============================================================
+ALL TASKS COMPLETED SUCCESSFULLY!
+============================================================
